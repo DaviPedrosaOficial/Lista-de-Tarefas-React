@@ -4,16 +4,7 @@ import './App.css';
 
 
 function App(){
-  return(
-    <div>
-      <h1>Meu primeiro app em React</h1>
-      <Main />
-
-      <p>Bem-vindo ao meu primeiro app em React!</p>
-      <p>Este é um exemplo simples para mostrar como criar um componente React e renderizá-lo na tela.</p>
-
-    </div>
-  );
+  return <Main />;
 }
 
 export default App;
