@@ -5,3 +5,11 @@
   box-sizing: border-box;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+body {
+  background-color: #0a4f70;
+}
+
+button {
+  cursor: pointer;
+}
