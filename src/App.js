@@ -1,23 +1,14 @@
-import logo from './logo.svg';
+import React from "react";
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+function App(){
+  return(
+    <div>
+      <h1>Meu primeiro app em React</h1>
+
+      <p>Bem-vindo ao meu primeiro app em React!</p>
+      <p>Este é um exemplo simples para mostrar como criar um componente React e renderizá-lo na tela.</p>
+
     </div>
   );
 }
