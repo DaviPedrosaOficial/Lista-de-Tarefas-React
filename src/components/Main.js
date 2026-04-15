@@ -14,6 +14,29 @@ export default class Main extends Component {
     tarefas: [],
   };
 
+  componentDidMount() {                                               // Carregar as tarefas do localStorage quando o componente for montado, para verificar se existem tarefas no mesmo, e caso existam, elas serão inseridas em nosso estado, para que sejam exibidas na tela.
+    const tarefas = JSON.parse(localStorage.getItem('tarefas'));
+
+    if (!tarefas){
+      return;
+    }
+
+    this.setState({
+      tarefas: tarefas,
+    })
+  }
+
+  componentDidUpdate (prevProps, prevState) {                         // Salvando as tarefas no LocalStorage, sempre que o estado da mesma for alterado, passando a serem armazenadas em formato JSON, para que possam ser recuperadas posteriormente.
+    const { tarefas } = this.state;
+
+    if (tarefas === prevState.tarefas) {
+      return;
+    }
+
+    localStorage.setItem('tarefas', JSON.stringify(tarefas));
+  }
+
+
   handleChange = (eventoOnChange) => {
     this.setState({
       novaTarefa: eventoOnChange.target.value,
