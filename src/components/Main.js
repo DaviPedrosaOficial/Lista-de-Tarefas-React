@@ -20,12 +20,36 @@ export default class Main extends Component {
     })
   }
 
-  adicionaTarefa = (eventoOnSubmit) => {
+  handleSubmit = (eventoOnSubmit) => {
     eventoOnSubmit.preventDefault();
 
     this.setState({
       tarefas: [...this.state.tarefas, this.state.novaTarefa],
       novaTarefa: '',
+    });
+  }
+
+  handleEdit = (index) => {
+    const tarefaEditada = prompt('Digite a nova tarefa:');
+
+    if (tarefaEditada) {
+      const { tarefas } = this.state;
+      const tarefasAtualizadas = [...tarefas];
+      tarefasAtualizadas[index] = tarefaEditada;
+
+      this.setState({
+        tarefas: tarefasAtualizadas,
+      });
+    }
+
+  }
+
+  handleDelete = (index) => {
+    const { tarefas } = this.state;
+    const tarefasAtualizadas = tarefas.filter((tarefa, i) => i !== index);
+
+    this.setState({
+      tarefas: tarefasAtualizadas,
     });
   }
 
@@ -39,7 +63,7 @@ export default class Main extends Component {
 
         <h1>Lista de Tarefas</h1>
 
-        <form onSubmit={this.adicionaTarefa} className='form'>
+        <form onSubmit={this.handleSubmit} className='form'>
 
           <input
             onChange={this.handleChange}
@@ -58,10 +82,16 @@ export default class Main extends Component {
             <li key={index}>
               {tarefa}
               <div>
-                <button type="button" className='edit'>
+                <button
+                  onClick={() => this.handleEdit(index)}
+                  type="button"
+                  className='edit'>
                   <FaEdit />
                 </button>
-                <button type="button" className='delete'>
+                <button
+                  onClick={() => this.handleDelete(index)}
+                  type="button"
+                  className='delete'>
                   <FaTrash />
                 </button>
               </div>
