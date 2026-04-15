@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 
-// Importando o CSS do componente para o Formulario
-import { FaPlus } from 'react-icons/fa';
+import Form from './Form';
 
-// Importando os botões de editar e excluir para as tarefas
-import { FaEdit, FaTrash } from 'react-icons/fa';
+import Ul from './Ul';
 
 import './Main.css';
 
@@ -86,41 +84,17 @@ export default class Main extends Component {
 
         <h1>Lista de Tarefas</h1>
 
-        <form onSubmit={this.handleSubmit} className='form'>
+        <Form                               // Passando as funções de manipulação de eventos e o valor da nova tarefa como props(propriedades) para o componente Form, para que ele possa utilizá-los para atualizar o estado do componente Main e adicionar novas tarefas à lista.
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+          novaTarefa={novaTarefa}
+        />
 
-          <input
-            onChange={this.handleChange}
-            value={novaTarefa}
-            type="text"
-            placeholder="Digite uma tarefa" />
-
-          <button type="submit">
-            <FaPlus />
-          </button>
-
-        </form>
-
-        <ul className='tarefas'>
-          {tarefas.map((tarefa, index) =>
-            <li key={index}>
-              {tarefa}
-              <div>
-                <button
-                  onClick={() => this.handleEdit(index)}
-                  type="button"
-                  className='edit'>
-                  <FaEdit />
-                </button>
-                <button
-                  onClick={() => this.handleDelete(index)}
-                  type="button"
-                  className='delete'>
-                  <FaTrash />
-                </button>
-              </div>
-
-            </li>)}
-        </ul>
+        <Ul                                 // Passando a lista de tarefas e as funções de manipulação de eventos para o componente Ul, para que ele possa exibir as tarefas e permitir a edição e exclusão das mesmas.
+         tarefas={tarefas}
+         handleEdit={this.handleEdit}
+         handleDelete={this.handleDelete}
+        />
       </div>
     );
   }

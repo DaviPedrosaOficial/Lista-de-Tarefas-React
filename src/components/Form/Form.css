@@ -1,0 +1,28 @@
+.form{
+  display: flex;
+  margin-top: 15px;
+}
+
+.form input[type="text"]{
+  flex: 1;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #373F51;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
+}
+
+.form button[type="submit"]{
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #DAA49A;
+  color: #fff;
+  border: 1px solid #373F51;
+  box-shadow: 0px 0px 5px rgba(0,0,0,0.5);
+  border-radius: 5px;
+  margin-left: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
